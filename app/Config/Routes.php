@@ -5,19 +5,12 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/admin', function () {
-    return view('loginAdmin');
-});
-$routes->post('/loginAdmin', 'Auth::loginAdmin');
+$routes->get('/', 'CalonMahasiswa::index');
+$routes->get('/login', 'CalonMahasiswa::login');
+$routes->get('/register', 'CalonMahasiswa::pendaftaran');
+$routes->get('/logout', 'CalonMahasiswa::logout');
 
-$routes->get('/', 'Home::index');
-$routes->get('/prosedur', 'Home::prosedur');
-$routes->get('/profil', 'Home::profil');
-$routes->get('/kontak', 'Home::kontak');
-
-$routes->post('register', 'Auth::register');
-$routes->post('/loginWarga', 'Auth::loginWarga');
-$routes->get('/logout', 'Auth::logout');
+$routes->get('/admin', 'Admin::index');
 
 $routes->group('Warga', ['filter' => 'role:warga'], function ($routes) {
     $routes->get('/', 'Warga::index');
@@ -90,10 +83,4 @@ $routes->group('Kepala', ['filter' => 'role:kepala'], function ($routes) {
     $routes->get('laporanSurat', 'Kepala::laporanSurat'); // Laporan Surat
     $routes->post('laporan/getDataByMonth', 'Kepala::getDataByMonth');
     $routes->get('laporan/cetak', 'Kepala::cetakLaporan');
-});
-
-
-// Jika route tidak ada akan di alihkan 
-$routes->set404Override(function () {
-    echo view('error');
 });
