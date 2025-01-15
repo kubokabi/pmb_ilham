@@ -15,7 +15,7 @@ class RoleFilter implements FilterInterface
 
         // Jika pengguna tidak terautentikasi, redirect ke login
         if (!$role) {
-            return redirect()->to('/');
+            return redirect()->to('/login');
         }
 
         // Jika tidak ada argumen, izinkan akses
@@ -27,8 +27,8 @@ class RoleFilter implements FilterInterface
         if (!in_array($role, $arguments)) {
             // Jika tidak diizinkan, redirect ke dashboard sesuai perannya
             $dashboardPaths = [
-                'warga' => 'Warga',
-                'petugas' => 'Petugas',
+                'admin' => 'Admin/dashboard',
+                'calon' => 'CalonMahasiswa/dashboard',
             ];
 
             if (array_key_exists($role, $dashboardPaths)) {

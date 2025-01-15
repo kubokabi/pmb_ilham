@@ -7,11 +7,13 @@
     <title><?= $this->renderSection('title') ?></title>
 
     <!-- Favicons -->
-    <link href="<?= base_url('Bizland/assets/img/favicon.png') ?>" rel="icon">
-    <link href="<?= base_url('Bizland/assets/img/apple-touch-icon.png') ?>" rel="apple-touch-icon">
+    <link href="https://cdn-icons-png.flaticon.com/128/8074/8074800.png" rel="icon">
+    <link href="https://cdn-icons-png.flaticon.com/128/8074/8074800.png" rel="apple-touch-icon">
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="<?= base_url('Bizland/assets/vendor/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
@@ -25,6 +27,34 @@
 </head>
 
 <body>
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+    // Menampilkan pesan error menggunakan SweetAlert2
+    <?php if (session()->getFlashdata('error')): ?>
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: '<?= session()->getFlashdata('error') ?>',
+        confirmButtonText: 'OK'
+    });
+    <?php endif; ?>
+
+    // Menampilkan pesan sukses menggunakan SweetAlert2
+    <?php if (session()->getFlashdata('success')): ?>
+    Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: '<?= session()->getFlashdata('success') ?>',
+        confirmButtonText: 'OK'
+    });
+    <?php endif; ?>
+    </script>
+
     <!-- Header -->
     <?= $this->include('CalonMahasiswa/layout/header') ?>
 

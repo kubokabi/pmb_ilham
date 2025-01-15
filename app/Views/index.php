@@ -14,7 +14,7 @@ PMB - Universitas Bina Insan
                 <h1>PMB <span>Universitas Bina Insan Lubuklinggau</span></h1>
                 <p>Aplikasi Pendaftaran Mahasiswa Baru - Memudahkan Anda untuk Bergabung</p>
                 <div class="d-flex justify-content-center">
-                    <a href="#info-pmb" class="btn-get-started">DAFTAR SEKARANG</a>
+                    <a href="<?= base_url('register'); ?>" class="btn-get-started">DAFTAR SEKARANG</a>
                 </div>
             </div>
         </div>
@@ -77,7 +77,9 @@ PMB - Universitas Bina Insan
             <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
                 <div class="about-content">
                     <p>
-                        Universitas Bina Insan menawarkan program pendaftaran mahasiswa baru dengan sistem online yang modern. Kami menyediakan berbagai program studi unggulan dengan tenaga pengajar profesional untuk mendukung karier Anda di masa depan.
+                        Universitas Bina Insan menawarkan program pendaftaran mahasiswa baru dengan sistem online
+                        yang modern. Kami menyediakan berbagai program studi unggulan dengan tenaga pengajar
+                        profesional untuk mendukung karier Anda di masa depan.
                     </p>
                     <ul>
                         <li><i class="bi bi-check-circle"></i> Proses pendaftaran online yang mudah</li>
@@ -103,7 +105,8 @@ PMB - Universitas Bina Insan
                 <div class="service-item position-relative">
                     <div class="icon"><i class="bi bi-person-bounding-box"></i></div>
                     <h3>Konsultasi Pendaftaran</h3>
-                    <p>Kami menyediakan layanan konsultasi bagi calon mahasiswa yang membutuhkan bantuan dalam proses pendaftaran.</p>
+                    <p>Kami menyediakan layanan konsultasi bagi calon mahasiswa yang membutuhkan bantuan dalam proses
+                        pendaftaran.</p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
