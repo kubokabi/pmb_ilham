@@ -75,7 +75,7 @@ Informasi - Universitas Bina Insan
                                     <td><?= formatTanggalIndonesia($info['tgl_tutup']); ?></td>
                                     <td><?= formatTanggalIndonesia($info['tgl_pengumuman']); ?></td>
                                     <td>
-                                        <button class="btn btn-success btn-sm edit-btn"
+                                        <button class="btn btn-outline-success btn-sm edit-btn"
                                             data-id="<?= $info['id_informasi']; ?>"
                                             data-tgl_buka="<?= $info['tgl_buka']; ?>"
                                             data-tgl_tutup="<?= $info['tgl_tutup']; ?>"

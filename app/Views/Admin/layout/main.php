@@ -47,26 +47,30 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-    // Menampilkan pesan error menggunakan SweetAlert2
-    <?php if (session()->getFlashdata('error')): ?>
-    Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: '<?= session()->getFlashdata('error') ?>',
-        confirmButtonText: 'OK'
-    });
-    <?php endif; ?>
+        // Menampilkan pesan error menggunakan SweetAlert2
+        <?php if (session()->getFlashdata('error')): ?>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: '<?= session()->getFlashdata('error') ?>',
+                confirmButtonText: 'OK'
+            });
+        <?php endif; ?>
 
-    // Menampilkan pesan sukses menggunakan SweetAlert2
-    <?php if (session()->getFlashdata('success')): ?>
-    Swal.fire({
-        icon: 'success',
-        title: 'Success',
-        text: '<?= session()->getFlashdata('success') ?>',
-        confirmButtonText: 'OK'
-    });
-    <?php endif; ?>
+        // Menampilkan pesan sukses menggunakan SweetAlert2
+        <?php if (session()->getFlashdata('success')): ?>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '<?= session()->getFlashdata('success') ?>',
+                confirmButtonText: 'OK'
+            });
+        <?php endif; ?>
     </script>
+    <!-- jQuery -->
+    <script src="<?= base_url('plugins/jquery/jquery.min.js') ?>"></script>
+    <!-- Bootstrap 4 -->
+    <script src="<?= base_url('plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
     <div class="wrapper">
 
         <!-- Preloader -->
@@ -89,16 +93,14 @@
         <!-- Footer -->
         <?= $this->include('Admin/layout/footer') ?>
     </div>
-    <!-- jQuery -->
-    <script src="<?= base_url('plugins/jquery/jquery.min.js') ?>"></script>
+
     <!-- jQuery UI 1.11.4 -->
     <script src="<?= base_url('plugins/jquery-ui/jquery-ui.min.js') ?>"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
-    $.widget.bridge('uibutton', $.ui.button)
+        $.widget.bridge('uibutton', $.ui.button)
     </script>
-    <!-- Bootstrap 4 -->
-    <script src="<?= base_url('plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+
     <!-- ChartJS -->
     <script src="<?= base_url('plugins/chart.js/Chart.min.js') ?>"></script>
     <!-- Sparkline -->
@@ -133,26 +135,26 @@
     <script src="<?= base_url('plugins/datatables-buttons/js/buttons.print.min.js'); ?>"></script>
     <script src="<?= base_url('plugins/datatables-buttons/js/buttons.colVis.min.js'); ?>"></script>
     <script>
-    $(function() {
-        $("#dataTable").DataTable({
-            "responsive": true,
-            "lengthChange": true, // Mengaktifkan pengaturan jumlah entri per halaman
-            "autoWidth": false,
-            "paging": true, // Pagination
-            "searching": true, // Pencarian
-            "info": true, // Informasi jumlah data
-            "ordering": true, // Sortable kolom
-            "language": {
-                "lengthMenu": "Show _MENU_ entries",
-                "search": "Search:",
-                "paginate": {
-                    "previous": "Previous",
-                    "next": "Next"
-                },
-                "info": "Showing _START_ to _END_ of _TOTAL_ entries"
-            }
+        $(function() {
+            $("#dataTable").DataTable({
+                "responsive": true,
+                "lengthChange": true, // Mengaktifkan pengaturan jumlah entri per halaman
+                "autoWidth": false,
+                "paging": true, // Pagination
+                "searching": true, // Pencarian
+                "info": true, // Informasi jumlah data
+                "ordering": true, // Sortable kolom
+                "language": {
+                    "lengthMenu": "Show _MENU_ entries",
+                    "search": "Search:",
+                    "paginate": {
+                        "previous": "Previous",
+                        "next": "Next"
+                    },
+                    "info": "Showing _START_ to _END_ of _TOTAL_ entries"
+                }
+            });
         });
-    });
     </script>
 
 </body>

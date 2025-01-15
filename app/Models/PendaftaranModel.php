@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class PendaftaranModel extends Model
 {
-    protected $table = 'pendaftarans';
+    protected $table = 'pendaftaran';
     protected $primaryKey = 'id';
     protected $allowedFields = [
         'id_users',

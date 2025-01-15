@@ -24,11 +24,13 @@ class Pendaftaran extends Migration
                 'type' => 'INT',
                 'constraint' => 11,
                 'unsigned' => true,
+                'null' => true,
             ],
             'id_prodi' => [
                 'type' => 'INT',
                 'constraint' => 11,
                 'unsigned' => true,
+                'null' => true,
             ],
             'nomor_pendaftaran' => [
                 'type' => 'VARCHAR',
@@ -47,7 +49,7 @@ class Pendaftaran extends Migration
             ],
             'jenis_kelamin' => [
                 'type' => 'ENUM',
-                'constraint' => ['L', 'P'],
+                'constraint' => ['Laki-Laki', 'Perempuan'],
             ],
             'agama' => [
                 'type' => 'VARCHAR',

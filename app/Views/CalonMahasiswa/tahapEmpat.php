@@ -1,11 +1,69 @@
 <?= $this->extend('CalonMahasiswa/layout/main') ?>
 
 <?= $this->section('title') ?>
-Dashboard- PMB Universitas Bina Insan
+Tahap 4 - PMB Universitas Bina Insan
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<!--  Section -->
+<style>
+    .breadcrumb-item a {
+        text-decoration: none;
+        /* Hilangkan garis bawah link */
+    }
+
+    .font-tebal-banget {
+        font-weight: bolder;
+    }
+
+    .breadcrumb-item a:hover {
+        font-weight: bolder;
+        /* Tambahkan garis bawah saat hover */
+    }
+
+    .breadcrumb-item a.text-muted:hover {
+        color: #6c757d;
+        /* Warna abu-abu tetap saat hover jika tidak aktif */
+    }
+</style>
+<!-- Page Title -->
+<div class="page-title py-3 bg-light">
+    <div class="container d-flex justify-content-between align-items-center">
+        <!-- Title -->
+        <h1 class="mb-0">Biodata Peserta</h1>
+
+        <!-- Breadcrumbs -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item">
+                    <a href="<?= base_url('CalonMahasiswa/tahapsatu'); ?>"
+                        class="<?= (current_url() === base_url('CalonMahasiswa/tahapsatu')) ? 'font-tebal-banget text-dark' : 'text-muted'; ?>">
+                        Biodata
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="<?= base_url('CalonMahasiswa/tahapdua'); ?>"
+                        class="<?= (current_url() === base_url('CalonMahasiswa/tahapdua')) ? 'font-tebal-banget text-dark' : 'text-muted'; ?>">
+                        Prodi
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="<?= base_url('CalonMahasiswa/tahaptiga'); ?>"
+                        class="<?= (current_url() === base_url('CalonMahasiswa/tahaptiga')) ? 'font-tebal-banget text-dark' : 'text-muted'; ?>">
+                        Berkas
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="<?= base_url('CalonMahasiswa/tahapempat'); ?>"
+                        class="<?= (current_url() === base_url('CalonMahasiswa/tahapempat')) ? 'font-tebal-banget text-dark' : 'text-muted'; ?>">
+                        Resume
+                    </a>
+                </li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<!-- End Page Title -->
 <?php
 function formatTanggalIndonesia($tanggal)
 {
@@ -34,17 +92,17 @@ function formatTanggalIndonesia($tanggal)
 ?>
 <!--  Section -->
 <section class="container">
-    <div class="text-center mb-4" data-aos="fade-up">
-        <h2 class="fw-bold">Nomor Pendaftaran <span class="text-primary "><?= $pendaftaran['nomor_pendaftaran']; ?></span></h2>
-        <p class="text-muted">Pendaftaran berhasil dilakukan pada tanggal - <?= formatTanggalIndonesia($pendaftaran['tanggal_pendaftaran']); ?></p>
-    </div>
     <div class="card shadow">
+        <div class="card-header bg-light text-center">
+            <h4 class="mb-0">Nomor Pendaftaran <span class="text-primary"><?= $pendaftaran['nomor_pendaftaran']; ?></span></h4>
+            <small class="text-muted">Pendaftaran berhasil dilakukan pada tanggal - <?= formatTanggalIndonesia($pendaftaran['tanggal_pendaftaran']); ?></small>
+        </div>
         <div class="card-body">
             <div class="row">
                 <!-- Foto di Kiri -->
                 <div class="col-md-4 text-center">
                     <img src="<?= base_url('uploads/' . $pendaftaran['foto']); ?>" alt="Pas Foto" class="img-fluid rounded mb-3">
-                    <span class="d-block fw-bold">Preview Berkas Pendaftaran</span>
+                    <span>View Berkas Pendaftaran</span>
                 </div>
 
                 <!-- Konten di Kanan -->
@@ -78,47 +136,33 @@ function formatTanggalIndonesia($tanggal)
                         <!-- Tab Biodata -->
                         <div class="tab-pane fade show active" id="biodata" role="tabpanel" aria-labelledby="biodata-tab">
                             <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 5%;">#</th>
-                                        <th style="width: 30%;">Biodata</th>
-                                        <th style="width: 65%;">Keterangan</th>
-                                    </tr>
-                                </thead>
                                 <tbody>
-                                    <tr class="bg-light">
-                                        <td>1</td>
-                                        <td>Nama</td>
+                                    <tr>
+                                        <th>Nama</th>
                                         <td><?= $pendaftaran['nama_peserta']; ?></td>
                                     </tr>
                                     <tr>
-                                        <td>2</td>
-                                        <td>Tempat Lahir</td>
+                                        <th>Tempat Lahir</th>
                                         <td><?= $pendaftaran['tempat_lahir']; ?></td>
                                     </tr>
-                                    <tr class="bg-light">
-                                        <td>3</td>
-                                        <td>Tanggal Lahir</td>
-                                        <td><?= formatTanggalIndonesia($pendaftaran['tanggal_lahir']); ?></td>
+                                    <tr>
+                                        <th>Tanggal Lahir</th>
+                                        <td><?= $pendaftaran['tanggal_lahir']; ?></td>
                                     </tr>
                                     <tr>
-                                        <td>4</td>
-                                        <td>Jenis Kelamin</td>
+                                        <th>Jenis Kelamin</th>
                                         <td><?= $pendaftaran['jenis_kelamin']; ?></td>
                                     </tr>
-                                    <tr class="bg-light">
-                                        <td>5</td>
-                                        <td>Agama</td>
+                                    <tr>
+                                        <th>Agama</th>
                                         <td><?= $pendaftaran['agama']; ?></td>
                                     </tr>
                                     <tr>
-                                        <td>6</td>
-                                        <td>No. Handphone</td>
+                                        <th>No. Handphone</th>
                                         <td><?= $pendaftaran['no_hp']; ?></td>
                                     </tr>
-                                    <tr class="bg-light">
-                                        <td>7</td>
-                                        <td>Alamat</td>
+                                    <tr>
+                                        <th>Alamat</th>
                                         <td><?= $pendaftaran['alamat_peserta']; ?></td>
                                     </tr>
                                 </tbody>
@@ -128,22 +172,13 @@ function formatTanggalIndonesia($tanggal)
                         <!-- Tab Data Orang Tua -->
                         <div class="tab-pane fade" id="orangtua" role="tabpanel" aria-labelledby="orangtua-tab">
                             <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Data Orang Tua</th>
-                                        <th>Keterangan</th>
-                                    </tr>
-                                </thead>
                                 <tbody>
-                                    <tr class="bg-light">
-                                        <td>1</td>
-                                        <td>Nama Orang Tua/Wali</td>
+                                    <tr>
+                                        <th>Nama Orang Tua/Wali</th>
                                         <td><?= $pendaftaran['nama_orangtua']; ?></td>
                                     </tr>
                                     <tr>
-                                        <td>2</td>
-                                        <td>Pekerjaan Orang Tua</td>
+                                        <th>Pekerjaan Orang Tua</th>
                                         <td><?= $pendaftaran['pekerjaan_orangtua']; ?></td>
                                     </tr>
                                 </tbody>
@@ -153,27 +188,17 @@ function formatTanggalIndonesia($tanggal)
                         <!-- Tab Data Sekolah -->
                         <div class="tab-pane fade" id="sekolah" role="tabpanel" aria-labelledby="sekolah-tab">
                             <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Data Sekolah</th>
-                                        <th>Keterangan</th>
-                                    </tr>
-                                </thead>
                                 <tbody>
-                                    <tr class="bg-light">
-                                        <td>1</td>
-                                        <td>Nama Sekolah</td>
+                                    <tr>
+                                        <th>Nama Sekolah</th>
                                         <td><?= $pendaftaran['nama_sekolah']; ?></td>
                                     </tr>
                                     <tr>
-                                        <td>2</td>
-                                        <td>Tahun Lulus</td>
+                                        <th>Tahun Lulus</th>
                                         <td><?= $pendaftaran['tahun_lulus']; ?></td>
                                     </tr>
-                                    <tr class="bg-light">
-                                        <td>3</td>
-                                        <td>Alamat Sekolah</td>
+                                    <tr>
+                                        <th>Alamat Sekolah</th>
                                         <td><?= $pendaftaran['alamat_sekolah']; ?></td>
                                     </tr>
                                 </tbody>
@@ -183,22 +208,13 @@ function formatTanggalIndonesia($tanggal)
                         <!-- Tab Fakultas/Prodi -->
                         <div class="tab-pane fade" id="fakultas" role="tabpanel" aria-labelledby="fakultas-tab">
                             <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Fakultas/Prodi</th>
-                                        <th>Keterangan</th>
-                                    </tr>
-                                </thead>
                                 <tbody>
-                                    <tr class="bg-light">
-                                        <td>1</td>
-                                        <td>Fakultas</td>
+                                    <tr>
+                                        <th>Fakultas</th>
                                         <td><?= $pendaftaran['nama_fakultas']; ?></td>
                                     </tr>
                                     <tr>
-                                        <td>2</td>
-                                        <td>Program Studi</td>
+                                        <th>Program Studi</th>
                                         <td><?= $pendaftaran['nama_prodi']; ?></td>
                                     </tr>
                                 </tbody>
@@ -206,28 +222,31 @@ function formatTanggalIndonesia($tanggal)
                         </div>
                     </div>
 
+                    <!-- Finalisasi -->
                     <div class="text-start mt-4">
-                        <!-- Status Pendaftaran -->
-                        <?php if ($pendaftaran['status_pendaftaran'] === 'pending'): ?>
-                            <span class="badge bg-dark">Status Pendaftaran: Menunggu Persetujuan</span>
-                        <?php elseif ($pendaftaran['status_pendaftaran'] === 'approved'): ?>
-                            <span class="badge bg-success">Status Pendaftaran: Disetujui</span>
-                        <?php elseif ($pendaftaran['status_pendaftaran'] === 'rejected'): ?>
-                            <span class="badge bg-danger">Status Pendaftaran: Ditolak</span>
-                        <?php else: ?>
-                            <span class="badge bg-secondary">Status Pendaftaran: Tidak Diketahui</span>
-                        <?php endif; ?>
-                        <br>
-                        <!-- Status Verifikasi -->
-                        <?php if ($pendaftaran['status_verifikasi'] === 'unverified'): ?>
-                            <span class="badge bg-dark">Status Verifikasi: Belum Diverifikasi</span>
-                        <?php elseif ($pendaftaran['status_verifikasi'] === 'verified'): ?>
-                            <span class="badge bg-success">Status Verifikasi: Diverifikasi</span>
-                        <?php else: ?>
-                            <span class="badge bg-secondary">Status Verifikasi: Tidak Diketahui</span>
-                        <?php endif; ?>
-                    </div>
+                        <form id="finalisasiForm" action="<?= base_url('CalonMahasiswa/updateTahapEmpat'); ?>" method="POST">
+                            <button type="button" id="finalisasiButton" class="btn btn-primary">Finalisasi Pendaftaran</button>
+                        </form>
 
+                        <script>
+                            document.getElementById('finalisasiButton').addEventListener('click', function() {
+                                Swal.fire({
+                                    title: 'Yakin untuk Finalisasi?',
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Ya, Finalisasi',
+                                    cancelButtonText: 'Batal'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        document.getElementById('finalisasiForm').submit();
+                                    }
+                                });
+                            });
+                        </script>
+
+                    </div>
                 </div>
             </div>
         </div>

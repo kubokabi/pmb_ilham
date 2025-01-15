@@ -37,7 +37,7 @@ Login - PMB Universitas Bina Insan
 
             <!-- Form Section -->
             <div class="col-lg-6" data-aos="fade-left">
-                <div class="card shadow p-4">
+                <div class="card p-4 shadow" style="border:none">
                     <form action="<?= base_url('autentikasi'); ?>" method="POST">
                         <!-- Email Input -->
                         <div class="input-group mb-3">

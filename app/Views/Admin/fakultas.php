@@ -41,14 +41,15 @@ Data Fakultas
                                         <td><?= $key + 1; ?></td>
                                         <td><?= $row['nama_fakultas']; ?></td>
                                         <td>
-                                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                                            <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal"
                                                 data-target="#fakultasModal"
                                                 data-id_fakultas="<?= $row['id_fakultas']; ?>"
                                                 data-nama_fakultas="<?= $row['nama_fakultas']; ?>">
                                                 <i class="fas fa-edit"></i>
                                             </button>
+
                                             <form action="<?= base_url('Admin/deleteFakultas/') . $row['id_fakultas']; ?>" method="POST" style="display: inline;">
-                                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete(this)">
+                                                <button type="button" class="btn btn-outline-danger btn-sm" onclick="confirmDelete(this)">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </form>
@@ -64,7 +65,7 @@ Data Fakultas
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h4 class="modal-title" id="fakultasModalLabel">Tambah/Edit Fakultas</h4>
+                                    <h4 class="modal-title" id="fakultasModalLabel">Fakultas</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -74,11 +75,11 @@ Data Fakultas
                                         <input type="hidden" id="id_fakultas" name="id_fakultas">
                                         <div class="form-group">
                                             <label for="nama_fakultas">Nama Fakultas</label>
-                                            <input type="text" id="nama_fakultas" name="nama_fakultas" class="form-control" required>
+                                            <input type="text" id="nama_fakultas" name="nama_fakultas" class="form-control" placeholder="Masukan nama fakultas.." required>
                                         </div>
                                     </div>
                                     <div class="modal-footer justify-content-between">
-                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                        <button type="submit" class="button-aksi btn btn-primary">Simpan</button>
                                     </div>
                                 </form>
                             </div>
@@ -89,29 +90,28 @@ Data Fakultas
             </div>
         </div>
     </div>
-</section>
-
+</section> 
 <script>
     // Isi data modal untuk edit
-    $('#fakultasModal').on('show.bs.modal', function (event) {
+    $('#fakultasModal').on('show.bs.modal', function(event) {
         const button = $(event.relatedTarget); // Button yang men-trigger modal
         const id = button.data('id_fakultas');
-        const nama = button.data('nama_fakultas');
-
-        // Log ke console untuk memastikan data terpanggil
-        console.log('Edit Data:', { id_fakultas: id, nama_fakultas: nama });
+        const nama = button.data('nama_fakultas'); 
 
         const modal = $(this);
         if (id) {
             modal.find('#id_fakultas').val(id);
             modal.find('#nama_fakultas').val(nama);
             modal.find('.modal-title').text('Edit Fakultas');
+            modal.find('.button-aksi').text('Update');
         } else {
             modal.find('#id_fakultas').val('');
             modal.find('#nama_fakultas').val('');
             modal.find('.modal-title').text('Tambah Fakultas');
+            modal.find('.button-aksi').text('Simpan');
         }
     });
+
 
     // Konfirmasi Hapus
     function confirmDelete(button) {

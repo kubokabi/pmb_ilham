@@ -1,6 +1,6 @@
 <header id="header" class="header sticky-top">
 
-    <div class="topbar d-flex align-items-center">
+    <!-- <div class="topbar d-flex align-items-center">
         <div class="container d-flex justify-content-center justify-content-md-between">
             <div class="contact-info d-flex align-items-center">
                 <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">contact@example.com</a></i>
@@ -13,7 +13,8 @@
                 <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
             </div>
         </div>
-    </div><!-- End Top Bar -->
+    </div> -->
+    <!-- End Top Bar -->
 
     <div class="branding d-flex align-items-cente">
 
@@ -24,14 +25,34 @@
 
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    <?php if (session()->get('id_user')): ?>
+                    <?php if (session()->get('role') === 'calon'): ?>
                         <!-- Menu untuk user yang sudah login -->
                         <li>
-                            <a href="<?= base_url('/'); ?>" class="<?= (current_url() === base_url('/')) ? 'active' : ''; ?>">Home</a>
+                            <a href="#" class="active">Home</a>
                         </li>
                         <li>
-                            <a href="<?= base_url('logout'); ?>" class="<?= (current_url() === base_url('logout')) ? 'active' : ''; ?>">Logout</a>
+                            <a href="#" onclick="confirmLogout(event)" class="<?= (current_url() === base_url('logout')) ? 'active' : ''; ?>">Logout</a>
                         </li>
+                        <script>
+                            function confirmLogout(event) {
+                                event.preventDefault(); // Cegah tautan langsung dijalankan
+                                Swal.fire({
+                                    title: 'Anda yakin ingin logout?',
+                                    text: "Anda akan keluar dari sesi ini.",
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Ya, logout',
+                                    cancelButtonText: 'Batal'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        // Redirect ke URL logout
+                                        window.location.href = "<?= base_url('logout'); ?>";
+                                    }
+                                });
+                            }
+                        </script>
                     <?php else: ?>
                         <!-- Menu untuk user yang belum login -->
                         <li>

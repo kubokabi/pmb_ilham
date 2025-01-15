@@ -37,12 +37,12 @@ Pendaftaran - PMB Universitas Bina Insan
 
             <!-- Form Section -->
             <div class="col-lg-6" data-aos="fade-left">
-                <div class="card shadow p-4">
-                    <form action="<?= base_url('auth/register'); ?>" method="POST">
+                <div class="card p-4 shadow" style="border:none">
+                    <form action="<?= base_url('register'); ?>" method="POST">
                         <!-- Name Input -->
                         <div class="input-group mb-3">
                             <span class="input-group-text bg-white"><i class="bi bi-person"></i></span>
-                            <input type="text" class="form-control" id="name" name="name"
+                            <input type="text" class="form-control" id="name" name="nama"
                                 placeholder="Masukkan nama lengkap Anda" required>
                         </div>
                         <!-- Email Input -->

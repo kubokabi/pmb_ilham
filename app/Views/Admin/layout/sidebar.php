@@ -48,6 +48,16 @@
                         <p>Data Fakultas</p>
                     </a>
                 </li>
+                <?php
+
+                use App\Models\FakultasModel;
+
+                // Buat instance model
+                $fakultasModel = new FakultasModel();
+
+                // Ambil semua data fakultas
+                $fakultas = $fakultasModel->findAll();
+                ?>
 
                 <!-- Data Program Studi -->
                 <li class="nav-item <?= (strpos(current_url(), 'Admin/data-prodi') !== false) ? 'menu-open' : ''; ?>">
@@ -60,34 +70,15 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="<?= base_url('/data-prodi/teknik'); ?>"
-                                class="nav-link <?= (current_url() === base_url('/data-prodi/teknik')) ? 'active' : ''; ?>">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Fakultas Ilmu Teknik</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('/data-prodi/ekonomi'); ?>"
-                                class="nav-link <?= (current_url() === base_url('/data-prodi/ekonomi')) ? 'active' : ''; ?>">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>F Ekonomi & Bisnis</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('/data-prodi/hukum'); ?>"
-                                class="nav-link <?= (current_url() === base_url('/data-prodi/hukum')) ? 'active' : ''; ?>">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Fakultas Hukum</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('/data-prodi/pertanian'); ?>"
-                                class="nav-link <?= (current_url() === base_url('/data-prodi/pertanian')) ? 'active' : ''; ?>">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Fakultas Pertanian</p>
-                            </a>
-                        </li>
+                        <?php foreach ($fakultas as $fak): ?>
+                            <li class="nav-item">
+                                <a href="<?= base_url('Admin/data-prodi/' . $fak['id_fakultas']); ?>"
+                                    class="nav-link <?= (current_url() === base_url('Admin/data-prodi/' . $fak['id_fakultas'])) ? 'active' : ''; ?>">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p><?= mb_strimwidth($fak['nama_fakultas'], 0, 23, '...'); ?></p>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
                     </ul>
                 </li>
 

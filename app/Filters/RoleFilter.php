@@ -5,6 +5,7 @@ namespace App\Filters;
 use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
+use App\Models\PendaftaranModel;
 
 class RoleFilter implements FilterInterface
 {
@@ -15,8 +16,8 @@ class RoleFilter implements FilterInterface
 
         // Jika pengguna tidak terautentikasi, redirect ke login
         if (!$role) {
-            return redirect()->to('/login');
-        }
+            return redirect()->to('/login')->with('error', 'Silakan login untuk melanjutkan.');
+        } 
 
         // Jika tidak ada argumen, izinkan akses
         if (!$arguments) {
@@ -25,21 +26,19 @@ class RoleFilter implements FilterInterface
 
         // Periksa apakah peran pengguna termasuk dalam argumen yang diizinkan
         if (!in_array($role, $arguments)) {
-            // Jika tidak diizinkan, redirect ke dashboard sesuai perannya
+            // Jika role tidak diizinkan, redirect ke dashboard masing-masing
             $dashboardPaths = [
                 'admin' => 'Admin/dashboard',
-                'calon' => 'CalonMahasiswa/dashboard',
+                'calon' => 'logout',
             ];
 
             if (array_key_exists($role, $dashboardPaths)) {
                 return redirect()->to(base_url($dashboardPaths[$role]));
             } else {
                 // Jika peran tidak dikenal, redirect ke halaman utama
-                return redirect()->to('/');
+                return redirect()->to('/')->with('error', 'Akses tidak diizinkan.');
             }
         }
-
-        // Jika peran diizinkan, lanjutkan permintaan
     }
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
